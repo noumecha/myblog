@@ -23,7 +23,7 @@
 			<div class="col-lg-4 col-md-6">
 				<div class="single-latest-news">
 					<a href="{{ route('article.show', ['id'=> $article->getId()]) }}">
-                        <div style="background-image: url('{{ asset('img/'.$article->getImage()) }}')" class="latest-news-bg">
+                        <div style="background-image: url('{{ asset('/storage/'.$article->getImage()) }}')" class="latest-news-bg">
                             <!--img src="{#{ asset('img/'.$article->getImage()) }#}" alt="" class="card-img-top img-card"-->
                         </div>
                     </a>

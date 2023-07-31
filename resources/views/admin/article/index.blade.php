@@ -18,11 +18,11 @@
                 <div class="row">
                     <div class="col">
                         <div class="mb-3 row">
-                            <label for="name" class="col-lg-2 col-md-6 col-sm-12 col-form-label">
+                            <label for="title" class="col-lg-2 col-md-6 col-sm-12 col-form-label">
                                 Title :
                             </label>
                             <div class="col-lg-10 col-md-6 col-sm-12">
-                                <input type="text" class="form-control" name="name" value="{{ old('title') }}">
+                                <input type="text" class="form-control" name="title" value="{{ old('title') }}">
                             </div>
                         </div>
                     </div>

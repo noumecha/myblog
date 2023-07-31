@@ -23,7 +23,7 @@
 			<div class="col-lg-8">
 				<div class="single-article-section">
 					<div class="single-article-text">
-						<div class="single-artcile-bg" style="background-image: url('{{ asset('img/'.$article_data['article']->getImage()) }}')"></div>
+						<div class="single-artcile-bg" style="background-image: url('{{ asset('/storage/'.$article_data['article']->getImage()) }}')"></div>
 						<!--p class="blog-meta">
 							<span class="author"><i class="fas fa-user"></i> Admin</span>
 							<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>

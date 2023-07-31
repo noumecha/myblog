@@ -24,7 +24,7 @@ class AdminArticleController extends Controller
 
         $newArticle = new Article();
 
-        $newArticle->setName($request->input('title'));
+        $newArticle->setTitle($request->input('title'));
         $newArticle->setContent($request->input('content'));
         $newArticle->setImage("games.jpg");
         $newArticle->save();
