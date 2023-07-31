@@ -21,7 +21,76 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'tel',
     ];
+
+    /**
+     * user getter & setters
+     */
+    public function getId()
+    {
+        return $this->attributes['id'];
+    }
+    public function setId($id)
+    {
+        $this->attributes['id'] = $id;
+    }
+    public function getName() {
+        return $this->attributes['name'];
+    }
+    public function setName($name)
+    {
+        $this->attributes['name'] = $name;
+    }
+    public function getEmail() {
+        return $this->attributes['email'];
+    }
+    public function setEmail($email) {
+        $this->attributes['email'] = $email;
+    }
+    public function getPassword() {
+        return $this->attributes['password'];
+    }
+    public function setPassword($password) {
+        $this->attributes['password'] = $password;
+    }
+    public function getRole() {
+        return $this->attributes['role'];
+    }
+    public function setRole($role) {
+        $this->attributes['role'] = $role;
+    }
+    public function getTel() {
+        return $this->attributes['tel'];
+    }
+    public function setTel($balance) {
+        $this->attributes['tel'] = $balance;
+    }
+    public function getCreatedAt() {
+        return $this->attributes['created_at'];
+    }
+    public function setCreatedAt($createdAt) {
+        $this->attributes['created_at'] = $createdAt;
+    }
+    public function getUpdatedAt() {
+        return $this->attributes['updated_at'];
+    }
+    public function setUpdatedAt($updatedAt) {
+        $this->attributes['updated_at'] = $updatedAt;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function validate($request) {
+        $request->validate([
+            "name" => "required|max:26",
+            "email" => "required",
+            "tel" => "required|max:13",
+            "password" => "required|confirmed",
+            "role" => "required",
+        ]);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

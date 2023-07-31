@@ -98,6 +98,29 @@
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 									</div>
 								</li>
+                                @guest
+                                    <li>
+                                        <a href="{{ route('login') }}">
+                                            Login
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('register') }}">
+                                            Register
+                                        </a>
+                                    </li>
+                                @else
+                                    <li>
+                                        <form id="logout" action="{{ route('logout') }}" method="POST">
+                                            <li>
+                                                <a role="button" onclick="document.getElementById('logout').submit();">
+                                                    Logout
+                                                </a>
+                                            </li>
+                                            @csrf
+                                        </form>
+                                    </li>
+                                @endguest
 							</ul>
 						</nav>
 						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>

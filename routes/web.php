@@ -31,3 +31,12 @@ Route::post('/admin/articles/store','App\Http\Controllers\Admin\AdminArticleCont
 Route::delete('/admin/articles/{id}/delete','App\Http\Controllers\Admin\AdminArticleController@delete')->name('admin.article.delete');
 Route::get('/admin/articles/{id}/edit','App\Http\Controllers\Admin\AdminArticleController@edit')->name('admin.article.edit');
 Route::put('/admin/articles/{id}/update','App\Http\Controllers\Admin\AdminArticleController@update')->name('admin.article.update');
+
+// route for admin users
+Route::get('/admin/users','App\Http\Controllers\Admin\AdminUserController@index')->name('admin.user.index');
+Route::post('/admin/users/store','App\Http\Controllers\Admin\AdminUserController@store')->name('admin.user.store');
+Route::delete('/admin/users/{id}/delete','App\Http\Controllers\Admin\AdminUserController@delete')->name('admin.user.delete');
+Route::get('/admin/users/{id}/edit','App\Http\Controllers\Admin\AdminUserController@edit')->name('admin.user.edit');
+Route::put('/admin/users/{id}/update','App\Http\Controllers\Admin\AdminArticleController@update')->name('admin.user.update');
+
+Auth::routes();

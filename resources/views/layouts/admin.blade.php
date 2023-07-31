@@ -31,6 +31,11 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ route("admin.user.index") }}" class="nav-link text-white">
+                            Admin - Users
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route("home.index") }}" class="mt-2 btn bg-primary text-white">
                             Go Back to home page
                         </a>
