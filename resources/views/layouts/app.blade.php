@@ -50,7 +50,7 @@
 					<div class="main-menu-wrap">
 						<!-- logo -->
 						<div class="site-logo">
-							<a href="index.html">
+							<a href="{{ route('home.index') }}">
 								<img src="{{ asset('/img/logo.png') }}" alt="">
 							</a>
 						</div>
@@ -59,7 +59,7 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="#">Home</a>
+								<li class="current-list-item"><a href="{{ route('home.index') }}">Home</a>
 									<!--ul class="sub-menu">
 										<li><a href="index.html">Static Home</a></li>
 										<li><a href="index_2.html">Slider Home</a></li>
@@ -77,9 +77,9 @@
 										<li><a href="shop.html">Shop</a></li>
 									</ul>
 								</li-->
-								<li><a href="{{ route('article.show') }}">Articles</a>
+								<li><a href="{{ route('article.index') }}">Articles</a>
 									<ul class="sub-menu">
-										<li><a href="{{ route('article.show') }}">Articles</a></li>
+										<li><a href="{{ route('article.index') }}">Articles</a></li>
 										<li><a href="single-news.html">Single Article</a></li>
 									</ul>
 								</li>

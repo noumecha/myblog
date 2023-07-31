@@ -13,18 +13,17 @@ class ArticleController extends Controller
         $article_data = [];
         $article_data['title'] = "Online Store - Products";
         $article_data['subtitle'] = "List of Products";
-        //$article_data['products'] = Article::all();
-        return view('article.show')->with('article_data', $article_data);
+        $article_data['articles'] = Article::all();
+        return view('article.index')->with('article_data', $article_data);
     }
 
-    public function show(/*$id*/)
+    public function show($id)
     {
         $article_data = [];
-        //$article = ProductController::$articles[$id-1];
-        //$article = Article::findOrFail($id);
-        $article_data['title'] = "Simple Blog - ";//.$article->getName();
-        $article_data['subtitle'] = "Article information - ";//.$article->getName();
-        //$article_data['product'] = $article;
+        $article = Article::findOrFail($id);
+        $article_data['title'] = "Simple Blog - ".$article->getTitle();
+        $article_data['subtitle'] = "Article No - ".$article->getId();
+        $article_data['article'] = $article;
         return view('article.show')->with('article_data', $article_data);
     }
 }

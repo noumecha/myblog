@@ -22,4 +22,5 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index')
 Route::get('/contact', 'App\Http\Controllers\ContactController@index')->name('contact.index');
 Route::get('/about', 'App\Http\Controllers\AboutController@index')->name('about.index');
 // article routes
-Route::get('/articles', 'App\Http\Controllers\ArticleController@index')->name('article.show');
+Route::get('/articles', 'App\Http\Controllers\ArticleController@index')->name('article.index');
+Route::get('/articles/{id}', 'App\Http\Controllers\ArticleController@show')->name('article.show');
