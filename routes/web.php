@@ -24,3 +24,10 @@ Route::get('/about', 'App\Http\Controllers\AboutController@index')->name('about.
 // article routes
 Route::get('/articles', 'App\Http\Controllers\ArticleController@index')->name('article.index');
 Route::get('/articles/{id}', 'App\Http\Controllers\ArticleController@show')->name('article.show');
+// route for admin
+Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name('admin.home.index');
+Route::get('/admin/articles','App\Http\Controllers\Admin\AdminArticleController@index')->name('admin.article.index');
+Route::post('/admin/articles/store','App\Http\Controllers\Admin\AdminArticleController@store')->name('admin.article.store');
+Route::delete('/admin/articles/{id}/delete','App\Http\Controllers\Admin\AdminArticleController@delete')->name('admin.article.delete');
+Route::get('/admin/articles/{id}/edit','App\Http\Controllers\Admin\AdminArticleController@edit')->name('admin.article.edit');
+Route::put('/admin/articles/{id}/update','App\Http\Controllers\Admin\AdminArticleController@update')->name('admin.article.update');
