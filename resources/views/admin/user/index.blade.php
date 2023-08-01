@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 @section('tile', $admin_data['title'])
 @section('content')
+@php
+    use Illuminate\Support\Str;
+@endphp
     <div class="card mb-4">
         <div class="card-header">
             Create Users
@@ -98,47 +101,78 @@
             </form>
         </div>
     </div>
+    <!-- users table -->
     <div class="card">
-        <div class="card-header">
-            Manage user
-        </div>
         <div class="card-body">
-            <table class="table table-bordered table-striped">
+            <!-- title -->
+            <div class="d-md-flex">
+                <div>
+                    <h4 class="card-title">Manage Users</h4>
+                    <h5 class="card-subtitle">Overview of Top Selling Items</h5>
+                </div>
+                <div class="ms-auto">
+                    <div class="dl">
+                        <select class="form-select shadow-none">
+                            <option value="0" selected>Monthly</option>
+                            <option value="1">Daily</option>
+                            <option value="2">Weekly</option>
+                            <option value="3">Yearly</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- title -->
+        </div>
+        <div class="table-responsive">
+            <table class="table v-middle">
                 <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
+                    <tr class="bg-light">
+                        <th class="border-top-0"></th>
+                        <th class="border-top-0">ID</th>
+                        <th class="border-top-0">Name</th>
+                        <th class="border-top-0">Role</th>
+                        <th class="border-top-0">Date Creation</th>
+                        <th class="border-top-0">Tel</th>
+                        <th class="border-top-0">Email</th>
+                        <th class="border-top-0">Edit</th>
+                        <th class="border-top-0">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($admin_data['users'] as $user)
-                        <tr>
-                            <td>{{ $user->getId() }}</td>
-                            <td>{{ $user->getName() }}</td>
-                            <td>{{ $user->getRole() }}</td>
-                            <td>
-                                <div class="btn btn-primary">
-                                    <a class="btn btn-primary" href="{{ route('admin.user.edit', ['id' => $user->getId()]) }}">
-                                        <i class="bi-pencil"></i>
-                                    </a>
-                                </div>
-                            </td>
-                            <td>
-                                <form action="{{ route('admin.user.delete', $user->getId()) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger">
-                                        <i class="bi-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
+                    @foreach($admin_data['users'] as $user)
+                    <tr>
+                        <td class="pt-2 pb-2 pl-0 pr-0">
+                            <a class="btn btn-circle fw-bold d-flex btn-orange text-uppercase text-white">
+                                {{ Str::limit($user->getName(), $limit=2, $end="") }}
+                            </a>
+                        </td>
+                        <td>{{ $user->getId() }}</td>
+                        <td>{{ $user->getName() }}</td>
+                        <td>{{ $user->getRole() }}</td>
+                        <td>{{ $user->getCreatedAt() }}</td>
+                        <td>{{ $user->getTel() }}</td>
+                        <td>{{ $user->getEmail() }}</td>
+                        <td>
+                            <div class="">
+                                <a class="btn btn-primary" href="{{ route('admin.user.edit', ['id' => $user->getId()]) }}">
+                                    <i class="bi-pencil"></i>
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <form action="{{ route('admin.user.delete', $user->getId()) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger">
+                                    <i class="bi-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+    <!-- end users table -->
 @endsection

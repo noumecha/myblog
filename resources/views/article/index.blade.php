@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('title', $article_data['title'])
 @section('content')
+@php
+    use Illuminate\Support\Str;
+@endphp
 <!-- breadcrumb-section -->
 <div class="breadcrumb-section breadcrumb-bg">
 	<div class="container">
@@ -38,9 +41,9 @@
 							<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
 						</p-->
 						<p class="excerpt">
-                            {{ $article->getContent() }}
+                            {{ Str::limit($article->getContent(), $limit=300, $end="...") }}
                         </p>
-						<a href="single-news.html" class="read-more-btn">
+						<a href="{{ route('article.show', ['id'=> $article->getId()]) }}" class="read-more-btn">
                             read more <i class="fas fa-angle-right"></i>
                         </a>
 					</div>
