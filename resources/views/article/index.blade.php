@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('title', $article_data['title'])
+@section('author', 'Noumecha Spaker')
+@section('description', 'Simple laravel blog about tech')
 @section('content')
 @php
     use Illuminate\Support\Str;
@@ -40,7 +42,7 @@
 							<span class="author"><i class="fas fa-user"></i> Admin</span>
 							<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
 						</p-->
-						<p class="excerpt">
+						<p class="text-justify excerpt">
                             {{ Str::limit($article->getContent(), $limit=300, $end="...") }}
                         </p>
 						<a href="{{ route('article.show', ['id'=> $article->getId()]) }}" class="read-more-btn">

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,19 +25,24 @@ Route::get('/about', 'App\Http\Controllers\AboutController@index')->name('about.
 // article routes
 Route::get('/articles', 'App\Http\Controllers\ArticleController@index')->name('article.index');
 Route::get('/articles/{id}', 'App\Http\Controllers\ArticleController@show')->name('article.show');
-// route for admin
-Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name('admin.home.index');
-Route::get('/admin/articles','App\Http\Controllers\Admin\AdminArticleController@index')->name('admin.article.index');
-Route::post('/admin/articles/store','App\Http\Controllers\Admin\AdminArticleController@store')->name('admin.article.store');
-Route::delete('/admin/articles/{id}/delete','App\Http\Controllers\Admin\AdminArticleController@delete')->name('admin.article.delete');
-Route::get('/admin/articles/{id}/edit','App\Http\Controllers\Admin\AdminArticleController@edit')->name('admin.article.edit');
-Route::put('/admin/articles/{id}/update','App\Http\Controllers\Admin\AdminArticleController@update')->name('admin.article.update');
 
-// route for admin users
-Route::get('/admin/users','App\Http\Controllers\Admin\AdminUserController@index')->name('admin.user.index');
-Route::post('/admin/users/store','App\Http\Controllers\Admin\AdminUserController@store')->name('admin.user.store');
-Route::delete('/admin/users/{id}/delete','App\Http\Controllers\Admin\AdminUserController@delete')->name('admin.user.delete');
-Route::get('/admin/users/{id}/edit','App\Http\Controllers\Admin\AdminUserController@edit')->name('admin.user.edit');
-Route::put('/admin/users/{id}/update','App\Http\Controllers\Admin\AdminArticleController@update')->name('admin.user.update');
+Route::middleware('admin')->group(function () {
+
+    // route for admin
+    Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name('admin.home.index');
+    Route::get('/admin/articles','App\Http\Controllers\Admin\AdminArticleController@index')->name('admin.article.index');
+    Route::post('/admin/articles/store','App\Http\Controllers\Admin\AdminArticleController@store')->name('admin.article.store');
+    Route::delete('/admin/articles/{id}/delete','App\Http\Controllers\Admin\AdminArticleController@delete')->name('admin.article.delete');
+    Route::get('/admin/articles/{id}/edit','App\Http\Controllers\Admin\AdminArticleController@edit')->name('admin.article.edit');
+    Route::put('/admin/articles/{id}/update','App\Http\Controllers\Admin\AdminArticleController@update')->name('admin.article.update');
+
+    // route for admin users
+    Route::get('/admin/users','App\Http\Controllers\Admin\AdminUserController@index')->name('admin.user.index');
+    Route::post('/admin/users/store','App\Http\Controllers\Admin\AdminUserController@store')->name('admin.user.store');
+    Route::delete('/admin/users/{id}/delete','App\Http\Controllers\Admin\AdminUserController@delete')->name('admin.user.delete');
+    Route::get('/admin/users/{id}/edit','App\Http\Controllers\Admin\AdminUserController@edit')->name('admin.user.edit');
+    Route::put('/admin/users/{id}/update','App\Http\Controllers\Admin\AdminArticleController@update')->name('admin.user.update');
+
+});
 
 Auth::routes();

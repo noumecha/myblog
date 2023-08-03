@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('tile', $admin_data['title'])
+@section('title', $admin_data['title'])
 @section('content')
     <div class="card mb-4">
         <div class="card-header">

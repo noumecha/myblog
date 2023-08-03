@@ -138,9 +138,9 @@
                                 <div class="user-content hide-menu m-l-10">
                                     <a href="#" class="" id="Userdd" role="button" data-bs-toggle="dropdown"
                                         aria-haspopup="true" aria-expanded="false">
-                                        <h5 class="m-b-0 user-name font-medium">Steave Jobs <i
+                                        <h5 class="m-b-0 user-name font-medium">Welcome back {{ auth()->user()->getName() }}<i
                                                 class="fa fa-angle-down"></i></h5>
-                                        <span class="op-5 user-email">varun@gmail.com</span>
+                                        <span class="op-5 user-email">{{ auth()->user()->getEmail() }}</span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="Userdd">
                                         <a class="dropdown-item" href="javascript:void(0)">
@@ -166,10 +166,21 @@
                             <!-- End User Profile-->
                         </li>
                         <li class="p-15 m-t-10">
-                            <a href="javascript:void(0)"
+                        @if ( auth()->user()->getRole() == 'admin')
+                            <a href="{{ route("admin.user.index") }}"
                                 class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center">
-                                <i class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Create New</span>
+                                <i class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Create New User</span>
                             </a>
+                            <a href="{{ route("admin.article.index") }}"
+                                class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center">
+                                <i class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Create New Article</span>
+                            </a>
+                        @else
+                            <a href="{{ route("admin.article.index") }}"
+                                class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center">
+                                <i class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Create New Article</span>
+                            </a>
+                        @endif
                         </li>
                         <!-- User Profile-->
                         <li class="sidebar-item">
@@ -185,10 +196,17 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route("admin.user.index") }}"
-                                aria-expanded="false"><i class="mdi mdi-account-network"></i><span
-                                    class="hide-menu">Users</span>
-                            </a>
+                            @if ( auth()->user()->getRole() == 'admin')
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route("admin.user.index") }}"
+                                    aria-expanded="false"><i class="mdi mdi-account-network"></i><span
+                                        class="hide-menu">Users</span>
+                                </a>
+                            @else
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                    aria-expanded="false"><i class="mdi mdi-account-network"></i><span
+                                        class="hide-menu">Not Admin yet!</span>
+                                </a>
+                            @endif
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route("admin.article.index") }}"
@@ -239,7 +257,7 @@
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Library</li>
                                 </ol>
                             </nav>

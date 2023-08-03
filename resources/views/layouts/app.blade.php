@@ -120,6 +120,11 @@
                                             @csrf
                                         </form>
                                     </li>
+                                    <li>
+                                        <a href="/admin">
+                                            Dashboard
+                                        </a>
+                                    </li>
                                 @endguest
 							</ul>
 						</nav>

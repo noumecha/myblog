@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('title', $article_data['title'])
+@section('author', 'Noumecha Spaker')
+@section('description', 'Simple laravel blog about tech')
 @section('content')
 <!-- breadcrumb-section -->
 <div class="breadcrumb-section breadcrumb-bg">

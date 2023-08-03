@@ -48,11 +48,29 @@ class Article extends Model
     public function setUpdatedAt($updatedAt) {
         $this->attributes['updated_at'] = $updatedAt;
     }
+    public function getCategorie() {
+        return $this->attributes['categorie'];
+    }
+    public function setCatgorie($categorie) {
+        $this->attributes['categorie'] = $categorie;
+    }
+    public function getUserId() {
+        return $this->attributes['user_id'];
+    }
+    public function setUserId($user_id) {
+        $this->attributes['user_id'] = $user_id;
+    }
     public static function validate($request) {
         $request->validate([
             "title" => "required|max:255",
             "content" => "required",
             "image" => "image",
         ]);
+    }
+    /**
+     * @inheritdoc
+     */
+    public function tags() {
+        return $this->belongsToMany('App\Models\Tag', 'article_tags', 'article_id', 'tag_id');
     }
 }
