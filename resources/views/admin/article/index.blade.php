@@ -46,7 +46,7 @@
                     <label for="content" class="form-label">
                         Contenu de l'Article :
                     </label>
-                    <textarea name="content" class="form-control">
+                    <textarea id="editor" name="content" class="form-control">
                         {{ old('content') }}
                     </textarea>
                 </div>
@@ -98,4 +98,13 @@
             </table>
         </div>
     </div>
+    <script src="{{ asset('js/ckeditor/ckeditor.js') }}">
+
+        // Get the editor
+        var editor = CKEDITOR.replace('editor');
+
+        // Set default content :
+        editor.setData('This is the default content');
+
+    </script>
 @endsection

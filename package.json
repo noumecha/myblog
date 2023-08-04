@@ -13,5 +13,9 @@
         "postcss": "^8.1.14",
         "sass": "^1.56.1",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "ckeditor4": "^4.22.1",
+        "laravel-mix": "^6.0.49"
     }
 }

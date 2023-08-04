@@ -15,17 +15,10 @@ class Tag extends Model
     public function setId($id) {
         $this->attributes['id'] = $id;
     }
-    public function getName() {
-        return $this->attributes['name'];
+    public function getNames() {
+        return $this->attributes['names'];
     }
-    public function setName($name) {
-        $this->attributes['name'] = $name;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function articles() {
-        return $this->belongsToMany('App\Models\Article', 'article_tags', 'tag_id', 'article_id');
+    public function setNames($name) {
+        $this->attributes['names'] = $name;
     }
 }
