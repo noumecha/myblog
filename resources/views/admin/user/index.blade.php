@@ -61,7 +61,7 @@
                                 Password :
                             </label>
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <input id="password" type="text" class="form-control" name="password" value="{{ old('password') }}">
+                                <input id="password" type="password" class="form-control" name="password" value="{{ old('password') }}">
                             </div>
                         </div>
                     </div>
@@ -69,12 +69,12 @@
                 <div class="row">
                     <div class="col">
                         <div class="row mb-3">
-                            <label for="confirm_password" class="col-lg-4 col-md-6 col-sm-12 col-form-label">
+                            <label for="password_confirmation" class="col-lg-4 col-md-6 col-sm-12 col-form-label">
                                 Confirm :
                             </label>
 
                             <div class="col-md-6">
-                                <input id="confirm_password" type="password" class="form-control" name="confirm_password" required>
+                                <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
                     </div>

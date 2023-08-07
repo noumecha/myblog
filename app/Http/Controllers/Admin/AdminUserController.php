@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Hash;
 
@@ -28,14 +29,15 @@ class AdminUserController extends Controller
         $newUser->setEmail($request->input('email'));
         $newUser->setTel($request->input('tel'));
         $newUser->setRole($request->input('role'));
-        $newUser->setPassword($request->input('password'));
+        //'password' => Hash::make($data['password'])
+        $newUser->setPassword(Hash::make($request->input('password')));
         $newUser->save();
 
         return back();
     }
 
     public function delete($id) {
-        user::destroy($id);
+        User::destroy($id);
         return back();
     }
 

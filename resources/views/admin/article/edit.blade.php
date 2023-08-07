@@ -12,6 +12,10 @@
             <li>- {{ $e }}</li>
             @endforeach
         </ul>
+        @else
+        <ul class="alert alert-success list-unstyled">
+            <li>successfully done !</li>
+        </ul>
         @endif
 
         <form action="{{ route('admin.article.update',['id'=>$admin_data['articles']->getId()]) }}" method="post" enctype="multipart/form-data">

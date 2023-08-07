@@ -3,7 +3,7 @@
 @section('content')
 <div class="card mb-4">
     <div class="card-header">
-        Edit article
+        Edit User
     </div>
     <div class="card-body">
         @if($errors->any())
@@ -58,6 +58,7 @@
                                 <option value="{{$admin_data['users']->getRole()}}" selected>{{$admin_data['users']->getRole()}}</option>
                                 <option value="admin">admin</option>
                                 <option value="autor">autor</option>
+                                <option value="autor">user</option>
                             </select>
                         </div>
                     </div>

@@ -48,18 +48,49 @@ class Article extends Model
     public function setUpdatedAt($updatedAt) {
         $this->attributes['updated_at'] = $updatedAt;
     }
-    public function getCategorie() {
-        return $this->attributes['categorie'];
+    /**
+     * these functions is for foreign keys only
+     */
+    /**
+     * @inheritdoc
+     */
+    public function getCategorieId() {
+        return $this->attributes['categorie_id'];
     }
-    public function setCatgorie($categorie) {
-        $this->attributes['categorie'] = $categorie;
+    /**
+     * @inheritdoc
+     */
+    public function setCatgorieId($categorie) {
+        $this->attributes['categorie_id'] = $categorie;
     }
+    /**
+     * @inheritdoc
+     */
     public function getUserId() {
         return $this->attributes['user_id'];
     }
+    /**
+     * @inheritdoc
+     */
     public function setUserId($user_id) {
         $this->attributes['user_id'] = $user_id;
     }
+    /**
+     * @inheritdoc
+     */
+    public function getTagId() {
+        return $this->attributes['tag_id'];
+    }
+    /**
+     * @inheritdoc
+     */
+    public function setTagId($tagId) {
+        $this->attributes['tag_id'] = $tagId;
+    }
+    /**
+     * @inheritdoc
+     * this function helps us validate input entry
+     */
     public static function validate($request) {
         $request->validate([
             "title" => "required|max:255",
@@ -69,8 +100,17 @@ class Article extends Model
     }
     /**
      * @inheritdoc
+     * define relationships between user and articles
      */
-    public function tags() {
-        return $this->belongsToMany('App\Models\Tag', 'article_tags', 'article_id', 'tag_id');
+    public function getUser() {
+        return $this->belongsTo('App\Models\User');
     }
+
+    /**
+     * @inheritdoc
+     * this function helps us get tags
+     */
+    /*public function tags() {
+        return $this->belongsToMany('App\Models\Tag', 'article_tags', 'article_id', 'tag_id');
+    }*/
 }
