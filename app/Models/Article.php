@@ -105,7 +105,13 @@ class Article extends Model
     public function getUser() {
         return $this->belongsTo('App\Models\User');
     }
-
+    /**
+     * @inheritdoc
+     * define relationships between user and categories
+     */
+    public function categories() {
+        return $this->belongsTo('App\Models\Categorie');
+    }
     /**
      * @inheritdoc
      * this function helps us get tags

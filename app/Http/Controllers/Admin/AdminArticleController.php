@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Article;
 use App\Http\Controllers\Controller;
+use App\Models\Categorie;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,6 +16,8 @@ class AdminArticleController extends Controller
         $admin_data = [];
         $admin_data['title'] = 'Admin Page - articles - Online Store';
         $admin_data['articles'] = Article::all();
+        $admin_data['categories'] = Categorie::all();
+        $admin_data['tags'] = Tag::all();
 
         return view('admin.article.index')->with('admin_data', $admin_data);
     }
@@ -27,6 +31,9 @@ class AdminArticleController extends Controller
         $newArticle->setTitle($request->input('title'));
         $newArticle->setContent($request->input('content'));
         $newArticle->setImage("games.jpg");
+        $newArticle->setUserId(auth()->user()->getId());
+        $newArticle->setTagId(1);
+        $newArticle->setCatgorieId($request->input('categorie'));
         $newArticle->save();
 
         if($request->hasFile('image')) {

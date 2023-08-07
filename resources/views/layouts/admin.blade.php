@@ -169,69 +169,63 @@
                         @if ( auth()->user()->getRole() == 'admin')
                             <a href="{{ route("admin.user.index") }}"
                                 class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center">
-                                <i class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Create New User</span>
+                                <i class="bi bi-person-plus"></i> <span class="hide-menu m-l-5">Create New User</span>
                             </a>
                             <a href="{{ route("admin.article.index") }}"
                                 class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center">
-                                <i class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Create New Article</span>
+                                <i class="bi bi-plus"></i> <span class="hide-menu m-l-5">Create New Article</span>
                             </a>
                         @else
                             <a href="{{ route("admin.article.index") }}"
                                 class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center">
-                                <i class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Create New Article</span>
+                                <i class="bi bi-plus"></i> <span class="hide-menu m-l-5">Create New Article</span>
                             </a>
                         @endif
                         </li>
                         <!-- User Profile-->
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html"
-                                aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin"
+                                aria-expanded="false"><i class="bi bi-house"></i><span
                                     class="hide-menu">Dashboard</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="pages-profile.html"
-                                aria-expanded="false"><i class="mdi mdi-account-network"></i><span
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin"
+                                aria-expanded="false"><i class="bi bi-person"></i><span
                                     class="hide-menu">Profile</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             @if ( auth()->user()->getRole() == 'admin')
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route("admin.user.index") }}"
-                                    aria-expanded="false"><i class="mdi mdi-account-network"></i><span
+                                    aria-expanded="false"><i class="bi bi-person-plus"></i><span
                                         class="hide-menu">Users</span>
-                                </a>
-                            @else
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
-                                    aria-expanded="false"><i class="mdi mdi-account-network"></i><span
-                                        class="hide-menu">Not Admin yet!</span>
                                 </a>
                             @endif
                         </li>
                         <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin.categorie.index') }}"
+                                aria-expanded="false"><i class="bi bi-bookmarks-fill"></i><span
+                                    class="hide-menu">Categories</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin.tag.index') }}"
+                                aria-expanded="false"><i class="bi bi-tag"></i><span
+                                    class="hide-menu">Tags</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route("admin.article.index") }}"
-                                aria-expanded="false"><i class="mdi mdi-account-network"></i><span
+                                aria-expanded="false"><i class="bi bi-plus-square-fill"></i><span
                                     class="hide-menu">Articles</span>
                             </a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="table-basic.html" aria-expanded="false"><i class="mdi mdi-border-all"></i><span
-                                    class="hide-menu">Table</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="starter-kit.html" aria-expanded="false"><i class="mdi mdi-file"></i><span
-                                    class="hide-menu">Blank</span>
-                                </a>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="error-404.html" aria-expanded="false"><i class="mdi mdi-alert-outline"></i><span
-                                    class="hide-menu">404</span>
-                                </a>
-                        </li>
                         <li class="text-center p-40 upgrade-btn">
-                            <a href="https://www.wrappixel.com/templates/xtremeadmin/"
-                                class="btn d-block w-100 btn-danger text-white" target="_blank">Upgrade to Pro</a>
+                            <a href="/home" class="btn d-block w-100 btn-danger text-white" target="_blank">
+                                <i class="bi bi-arrow-bar-left"></i>
+                                Go Back Home
+                            </a>
                         </li>
                     </ul>
 

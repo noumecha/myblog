@@ -15,10 +15,19 @@ class Tag extends Model
     public function setId($id) {
         $this->attributes['id'] = $id;
     }
-    public function getNames() {
+    public function getName() {
         return $this->attributes['names'];
     }
-    public function setNames($name) {
+    public function setName($name) {
         $this->attributes['names'] = $name;
+    }
+    /**
+     * @inheritdoc
+     * this function helps us validate input entry
+     */
+    public static function validate($request) {
+        $request->validate([
+            "name" => "required|max:255",
+        ]);
     }
 }

@@ -57,5 +57,14 @@ class Categorie extends Model
     public function setUpdatedAt($updatedAt) {
         $this->attributes['updated_at'] = $updatedAt;
     }
+        /**
+     * @inheritdoc
+     * this function helps us validate input entry
+     */
+    public static function validate($request) {
+        $request->validate([
+            "name" => "required|max:255",
+        ]);
+    }
 }
 
