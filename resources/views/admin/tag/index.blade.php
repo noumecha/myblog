@@ -22,7 +22,7 @@
                                 Name :
                             </label>
                             <div class="col-lg-10 col-md-6 col-sm-12">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
                             </div>
                         </div>
                     </div>

@@ -23,7 +23,7 @@ class AdminTagController extends Controller
 
         $newTag = new Tag();
 
-        $newTag->setName($request->input('name'));
+        $newTag->setName($request->input("name"));
         $newTag->save();
 
         return back();

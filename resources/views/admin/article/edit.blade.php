@@ -56,6 +56,40 @@
                     {{ $admin_data['articles']->getContent() }}
                 </textarea>
             </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3 row">
+                        <label for="tags" class="mb-3 col-lg-2 col-md-6 col-sm-12 col-form-label">
+                            Tags :
+                        </label>
+                        <div class="col-lg-10 col-md-6 col-sm-12">
+                            <input type="input" id="tags" name="tags" value="" placeholder="click on tag to add it" class="form-control">
+                        </div>
+                        <label class="list-group d-flex flex-row">
+                            @foreach ($admin_data['tags'] as $tag)
+                            <div class="list-group-item">
+                                <input class="form-group-check-input me-1 tags_items" type="checkbox" id="{{ $tag->getId() }}" value="{{ $tag->getName() }}"/>
+                                <label for="{{ $tag->getId() }}">
+                                    {{ $tag->getName() }}
+                                </label>
+                            </div>
+                            @endforeach
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label for="categorie" class="col-lg-2 col-md-6 col-sm-12 col-form-label">
+                    Categorie :
+                </label>
+                <div class="col-lg-10 col-md-6 col-sm-12">
+                    <select class="form-control" name="categorie" id="categorie">
+                        @foreach ($admin_data['categories'] as $cat)
+                            <option id="{{ $cat->getId() }}" value="{{ $cat->getId() }}">{{ $cat->getName() }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
             <button type="submit" class="btn btn-primary">
                 Edit
             </button>

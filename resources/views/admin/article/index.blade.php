@@ -49,16 +49,22 @@
                 <div class="row">
                     <div class="col">
                         <div class="mb-3 row">
-                            <label for="tag" class="col-lg-2 col-md-6 col-sm-12 col-form-label">
+                            <label for="tags" class="mb-3 col-lg-2 col-md-6 col-sm-12 col-form-label">
                                 Tags :
                             </label>
                             <div class="col-lg-10 col-md-6 col-sm-12">
-                                <select class="form-control" multiple name="tags" id="tags">
-                                    @foreach ($admin_data['tags'] as $tag)
-                                        <option id="{{ $tag->getId() }}" value="{{ $tag->getId() }}">{{ $tag->getName() }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="input" id="tags" name="tags" value="" placeholder="click on tag to add it" class="form-control">
                             </div>
+                            <label class="list-group d-flex flex-row">
+                                @foreach ($admin_data['tags'] as $tag)
+                                <div class="list-group-item">
+                                    <input class="form-group-check-input me-1 tags_items" type="checkbox" id="{{ $tag->getId() }}" value="{{ $tag->getName() }}"/>
+                                    <label for="{{ $tag->getId() }}">
+                                        {{ $tag->getName() }}
+                                    </label>
+                                </div>
+                                @endforeach
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -104,7 +110,7 @@
                             <td>{{ $article->getId() }}</td>
                             <td>{{ $article->getTitle() }}</td>
                             <td>{{ $article->getCategorieId() }}</td>
-                            <td>{{ $article->getTagId() }}</td>
+                            <td>{{ $article->getTags() }}</td>
                             <td>
                                 <a class="btn btn-primary" href="{{ route('admin.article.edit', ['id' => $article->getId()]) }}">
                                     <i class="bi-pencil"></i>
@@ -120,12 +126,33 @@
                                 </form>
                             </td>
                         </tr>
+                        @elseif( auth()->user()->getRole() === "admin")
+                            <tr>
+                                <td>{{ $article->getId() }}</td>
+                                <td>{{ $article->getTitle() }}</td>
+                                <td>{{ $article->getCategorieId() }}</td>
+                                <td>{{ $article->getTags() }}</td>
+                                <td>
+                                    <a class="btn btn-primary" href="{{ route('admin.article.edit', ['id' => $article->getId()]) }}">
+                                        <i class="bi-pencil"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <form action="{{ route('admin.article.delete', $article->getId()) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger">
+                                            <i class="bi-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
                         @endif
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
-    <script>
+    <script scr="{{ asset('/js/tags.js') }}">
     </script>
 @endsection

@@ -78,14 +78,14 @@ class Article extends Model
     /**
      * @inheritdoc
      */
-    public function getTagId() {
-        return $this->attributes['tag_id'];
+    public function getTags() {
+        return $this->attributes['tags'];
     }
     /**
      * @inheritdoc
      */
-    public function setTagId($tagId) {
-        $this->attributes['tag_id'] = $tagId;
+    public function setTags($tagId) {
+        $this->attributes['tags'] = $tagId;
     }
     /**
      * @inheritdoc

@@ -16,10 +16,10 @@ class Tag extends Model
         $this->attributes['id'] = $id;
     }
     public function getName() {
-        return $this->attributes['names'];
+        return $this->attributes['name'];
     }
     public function setName($name) {
-        $this->attributes['names'] = $name;
+        $this->attributes['name'] = $name;
     }
     /**
      * @inheritdoc
