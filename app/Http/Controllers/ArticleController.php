@@ -20,9 +20,12 @@ class ArticleController extends Controller
     public function show($id)
     {
         $article_data = [];
+        $article_data['articles'] = Article::all();
         $article = Article::findOrFail($id);
         $article_data['title'] = "Simple Blog - ".$article->getTitle();
         $article_data['subtitle'] = "Article No - ".$article->getId();
+        //$article_data['tags'] = strval($article->getTags());
+        $article_data['tags'] = explode(" ", $article->getTags());
         $article_data['article'] = $article;
         return view('article.show')->with('article_data', $article_data);
     }

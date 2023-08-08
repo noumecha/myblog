@@ -15,7 +15,7 @@ tagsItems.forEach(t => {
                 tagsValue.splice(i, 1);
             }
         }
-        tags.value = tagsValue.join(",");
+        tags.value = tagsValue.join(" ");
         console.log(tags.value);
     })
 })
