@@ -60,17 +60,21 @@ class AdminArticleController extends Controller
 
         $admin_data['title'] = 'Admin Page - Edit article - Simple Blog';
         $admin_data['articles'] = article::findOrFail($id);
+        $admin_data['categories'] = Categorie::all();
+        $admin_data['tags'] = Tag::all();
 
         return view('admin.article.edit')->with('admin_data', $admin_data);
     }
 
     public function update(Request $request, $id) {
 
-        article::validate($request);
+        Article::validate($request);
 
         $article = Article::findOrFail($id);
         $article->setTitle($request->input('title'));
         $article->setContent($request->input('content'));
+        $article->setTags($request->input('tags'));
+        $article->setCatgorieId($request->input('categorie'));
 
         if($request->hasFile('image')) {
             $imageName = $article->getId().".".$request->file('image')->getExtension();

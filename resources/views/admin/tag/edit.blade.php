@@ -28,7 +28,7 @@
                             Name :
                         </label>
                         <div class="col-lg-10 col-md-6 col-sm-12">
-                            <input type="text" name="name" value="{{$admin_data['tags']->getTitle()}}" class="form-control">
+                            <input type="text" name="name" value="{{$admin_data['tags']->getName()}}" class="form-control">
                         </div>
                     </div>
                 </div>

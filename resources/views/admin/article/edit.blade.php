@@ -85,7 +85,11 @@
                 <div class="col-lg-10 col-md-6 col-sm-12">
                     <select class="form-control" name="categorie" id="categorie">
                         @foreach ($admin_data['categories'] as $cat)
-                            <option id="{{ $cat->getId() }}" value="{{ $cat->getId() }}">{{ $cat->getName() }}</option>
+                            @if($admin_data['articles']->getCategorieId() == $cat->getId())
+                                <option selected id="{{ $cat->getId() }}" value="{{ $cat->getId() }}">{{ $cat->getName() }}</option>
+                            @else
+                                <option id="{{ $cat->getId() }}" value="{{ $cat->getId() }}">{{ $cat->getName() }}</option>
+                            @endif
                         @endforeach
                     </select>
                 </div>

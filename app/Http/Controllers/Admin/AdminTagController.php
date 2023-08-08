@@ -38,7 +38,7 @@ class AdminTagController extends Controller
         $admin_data = [];
 
         $admin_data['title'] = 'Admin Page - Edit Tag - Simple Blog';
-        $admin_data['Tags'] = Tag::findOrFail($id);
+        $admin_data['tags'] = Tag::findOrFail($id);
 
         return view('admin.tag.edit')->with('admin_data', $admin_data);
     }
