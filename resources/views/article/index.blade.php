@@ -19,6 +19,57 @@
 		</div>
 	</div>
 </div>
+<div class="latest-new mt-150 mb-150">
+    <div class="container">
+        <div class="row align-items-center justify-content-between mb-24">
+            <div class="col-auto">
+                <h1 class="h2">BLOG</h1>
+            </div>
+            <div class="col-auto">
+                <form action="{{ route('article.index') }}" method="GET">
+                    <div class="row align-items-center g-24">
+                        <label for="word" class="col-md-auto pe-0 form-label mb-0">
+                            SEARCH :
+                        </label>
+                        <div class="col-md-auto">
+                            <input type="text" id="word" class="form-control" name="word" value="">
+                        </div>
+                        <label for="category" class="col-md-auto pe-0 form-label mb-0">
+                            Categories :
+                        </label>
+                        <div class="col-md-auto">
+                            <select class="form-control form-select" id="category" name="category">
+                                <option value="0" selected>All</option>
+                                @foreach ($article_data['categories'] as $category)
+                                    <option value="{{ $category->getId() }}">{{ $category->getName() }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <label for="tag" class="col-md-auto pe-0 form-label mb-0">
+                            Tags :
+                        </label>
+                        <div class="col-md-auto">
+                            <select class="form-control form-select" id="tag" name="tag">
+                                <option value="0" selected>All</option>
+                                @foreach ($article_data['tags'] as $tag)
+                                    <option value="{{ $tag->getId() }}">{{ $tag->getName() }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-12 col-lg-auto">
+                            <button class="submit btn btn-lg btn-primary" type="submit">
+                                <span>SUBMIT</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="colCount">
+            <p class="fs-5 mb-0">BoxBrownie.com’s team and other experts offer their best advice, insights, and how-to's. All to help you improve the presentation of your property marketing.</p>
+        </div>
+    </div>
+</div>
 <!-- end breadcrumb section -->
 <!-- latest news -->
 <div class="latest-news mt-150 mb-150">

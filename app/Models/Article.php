@@ -124,7 +124,10 @@ class Article extends Model
      * @inheritdoc
      * this function helps us get tags
      */
-    /*public function tags() {
-        return $this->belongsToMany('App\Models\Tag', 'article_tags', 'article_id', 'tag_id');
-    }*/
+    public function sanitizeSearch($search) {
+
+        $sanitizeSearch = "";
+
+        return $sanitizeSearch;
+    }
 }
