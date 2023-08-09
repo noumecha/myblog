@@ -117,7 +117,8 @@ class Article extends Model
      * this function helps us get tags
      */
     public function comments() {
-        return $this->hasMany(Comment::class)->whereNull('parent_id');
+        //return $this->hasMany(Comment::class)->whereNull('parent_id');
+        return $this->morphMany(Comment::class, 'article')->whereNull('parent_id');
     }
     /**
      * @inheritdoc

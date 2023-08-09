@@ -40,9 +40,22 @@
                         ####################
                     -->
                     <div class="comments-list-wrap">
-                        <h3 class="comment-count-title">{{ "7" }} Comments</h3>
+                        <h3 class="comment-count-title">{{ count($article_data['comments']) }} Comments</h3>
+                        <!-- div class="comment-list">
+                            @ foreach($article_data['comments'] as $comment)
+                            <div class="single-comment-body" @ if($comment->parent_id != null) style="margin-left:40px;" @ endif>
+                                <div class="comment-user-avater">
+                                    <img src="assets/img/avaters/avatar1.png" alt="">
+                                </div>
+                                <div class="comment-text-body">
+                                    <h4>{#{ $comment->user->name }}<span class="comment-date">{#{ $comment->getUpdatedAt() }}</span> <a href="#">reply</a></h4>
+                                    <p>{#{ $comment->getContent() }}</p>
+                                </div>
+                            </div>
+                            @ endforeach
+                        </div -->
                         <div class="comment-list">
-                            @include('article.comment', ['comments' => $article_data['article']->comments(), 'article_id' => $article_data['article']->getId()])
+                            @include('article.comment', ['comments' => $article_data['comments'], 'article_id' => $article_data['article']->getId()])
                         </div>
                     </div>
                     @guest
@@ -71,42 +84,41 @@
                     @endguest
                     <!-- End Comments -->
 				</div>
-                <div class="col-lg-4 g">
-                    <div class="sidebar-section">
-                        <div class="recent-posts">
-                            <h4>Recent Posts</h4>
-                            <ul>
-                                @foreach ($article_data['articles'] as $art)
-                                    @if($art->getTitle() == $article_data['article']->getTitle())
-
-                                    @else
-                                        <li style="text-transform: uppercase;"><a href="/articles/{{ $art->getId() }}">{{ $art->getTitle() }}</a></li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </div>
-                        <!--div class="archive-posts">
-                            <h4>Archive Posts</h4>
-                            <ul>
-                                <li><a href="single-news.html">JAN 2019 (5)</a></li>
-                                <li><a href="single-news.html">FEB 2019 (3)</a></li>
-                                <li><a href="single-news.html">MAY 2019 (4)</a></li>
-                                <li><a href="single-news.html">SEP 2019 (4)</a></li>
-                                <li><a href="single-news.html">DEC 2019 (3)</a></li>
-                            </ul>
-                        </div-->
-                        <div class="tag-section">
-                            <h4>Tags</h4>
-                            <!-- h4>{#{ var_dump($article_data['tags']) }}</h4-->
-                            <ul>
-                                @foreach($article_data['tags'] as $tag)
-                                    <li><a href="#">{{ $tag }}</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
+			</div>
+            <div class="col-lg-4">
+                <div class="sidebar-section">
+                    <div class="recent-posts">
+                        <h4>Recent Posts</h4>
+                        <ul>
+                            @foreach ($article_data['articles'] as $art)
+                                @if($art->getTitle() == $article_data['article']->getTitle())
+                                @else
+                                    <li style="text-transform: uppercase;"><a href="/articles/{{ $art->getId() }}">{{ $art->getTitle() }}</a></li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
+                    <!--div class="archive-posts">
+                        <h4>Archive Posts</h4>
+                        <ul>
+                            <li><a href="single-news.html">JAN 2019 (5)</a></li>
+                            <li><a href="single-news.html">FEB 2019 (3)</a></li>
+                            <li><a href="single-news.html">MAY 2019 (4)</a></li>
+                            <li><a href="single-news.html">SEP 2019 (4)</a></li>
+                            <li><a href="single-news.html">DEC 2019 (3)</a></li>
+                        </ul>
+                    </div-->
+                    <div class="tag-section">
+                        <h4>Tags</h4>
+                        <!-- h4>{#{ var_dump($article_data['tags']) }}</h4-->
+                        <ul>
+                            @foreach($article_data['tags'] as $tag)
+                                <li><a href="#">{{ $tag }}</a></li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
-			</div>
+            </div>
 		</div>
 	</div>
 </div>

@@ -250,6 +250,8 @@
 	<script src="{{ asset('/js/sticker.js') }}"></script>
 	<!-- main js -->
 	<script src="{{ asset('/js/main.js') }}"></script>
-
+    <!-- Add some js files -->
+    <script src="{{ asset('/js/reply.js') }}">
+    </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use Illuminate\Http\Request;
+use App\Models\Comment;
 
 class ArticleController extends Controller
 {
@@ -22,7 +22,7 @@ class ArticleController extends Controller
         $article_data = [];
         $article_data['articles'] = Article::all();
         $article = Article::findOrFail($id);
-        //$article_data['number_of_comments'] = Article::;
+        $article_data['comments'] = Comment::all()->where('article_id', '=', $article->getId());
         $article_data['title'] = "Simple Blog - ".$article->getTitle();
         $article_data['subtitle'] = "Article No - ".$article->getId();
         $article_data['tags'] = explode(" ", $article->getTags());

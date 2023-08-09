@@ -153,6 +153,6 @@
             </table>
         </div>
     </div>
-    <script scr="{{ asset('/js/tags.js') }}">
+    <script src="{{ asset('/js/tags.js') }}">
     </script>
 @endsection
