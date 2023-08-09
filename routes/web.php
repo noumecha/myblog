@@ -25,6 +25,7 @@ Route::get('/about', 'App\Http\Controllers\AboutController@index')->name('about.
 // article routes
 Route::get('/articles', 'App\Http\Controllers\ArticleController@index')->name('article.index');
 Route::get('/articles/{id}', 'App\Http\Controllers\ArticleController@show')->name('article.show');
+Route::post('/comments/store', 'App\Http\Controllers\CommentController@store')->name('comments.store');
 
 Route::middleware('admin')->group(function () {
 

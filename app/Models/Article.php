@@ -102,15 +102,22 @@ class Article extends Model
      * @inheritdoc
      * define relationships between user and articles
      */
-    public function getUser() {
-        return $this->belongsTo('App\Models\User');
+    public function user() {
+        return $this->belongsTo(User::class);
     }
     /**
      * @inheritdoc
      * define relationships between user and categories
      */
     public function categories() {
-        return $this->belongsTo('App\Models\Categorie');
+        return $this->belongsTo(Categorie::class);
+    }
+    /**
+     * @inheritdoc
+     * this function helps us get tags
+     */
+    public function comments() {
+        return $this->hasMany(Comment::class)->whereNull('parent_id');
     }
     /**
      * @inheritdoc
