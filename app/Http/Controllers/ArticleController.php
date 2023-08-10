@@ -29,45 +29,49 @@ class ArticleController extends Controller
         if (!empty($article_data['category']) && !empty($article_data['tag']) && !empty($article_data['word'])) {
 
             $article_data['query']->where('tags', 'LIKE', "%".strtolower($article_data['tag'])."%")
+                                ->orWhere('tags', 'LIKE', "% ".strtolower($article_data['tag'])."%")
                                 ->where('title', 'LIKE', "%{$article_data['word']}%")
                                 ->where('categorie_id', '=', $article_data['category']);
-            $article_data['articles'] = $article_data['query']->get();
+            $article_data['articles'] = $article_data['query']->paginate(6);//get();
 
         } elseif (!empty($article_data['category']) && !empty($article_data['word'])) {
 
             $article_data['query']->where('title', 'LIKE', "%{$article_data['word']}%")
                                 ->where('categorie_id', '=', $article_data['category']);
-            $article_data['articles'] = $article_data['query']->get();
+            $article_data['articles'] = $article_data['query']->paginate(6);//get();
 
         } elseif(!empty($article_data['category']) && !empty($article_data['tag'])) {
 
-            $article_data['query']->where('tags', 'LIKE', "%".strtolower($article_data['tag'])."%")
+            $article_data['query']->where('tags', 'LIKE', "%".strtolower($article_data['tag'])." %")
+                                ->orWhere('tags', 'LIKE', "% ".strtolower($article_data['tag'])."%")
                                 ->where('categorie_id', '=', $article_data['category']);
-            $article_data['articles'] = $article_data['query']->get();
+            $article_data['articles'] = $article_data['query']->paginate(6);//get();
 
         } elseif (!empty($article_data['tag']) && !empty($article_data['word'])) {
 
-            $article_data['query']->where('tags', 'LIKE', "%".strtolower($article_data['tag'])."%")
+            $article_data['query']->where('tags', 'LIKE', "%".strtolower($article_data['tag'])." %")
+                                ->orWhere('tags', 'LIKE', "% ".strtolower($article_data['tag'])."%")
                                 ->where('title', 'LIKE', "%{$article_data['word']}%");
-            $article_data['articles'] = $article_data['query']->get();
+            $article_data['articles'] = $article_data['query']->paginate(6);//get();
 
         } elseif(!empty($article_data['tag'])) {
 
-            $article_data['query']->where('tags', 'LIKE', "%".strtolower($article_data['tag'])."%");
-            $article_data['articles'] = $article_data['query']->get();
+            $article_data['query']->where('tags', 'LIKE', "%".strtolower($article_data['tag'])." %")
+                                ->orWhere('tags', 'LIKE', "% ".strtolower($article_data['tag'])."%");
+            $article_data['articles'] = $article_data['query']->paginate(6);//get();
 
         } elseif(!empty($article_data['word'])) {
 
             $article_data['query']->where('title', 'LIKE', "%{$article_data['word']}%");
-            $article_data['articles'] = $article_data['query']->get();
+            $article_data['articles'] = $article_data['query']->paginate(6);//get();
 
         } elseif(!empty($article_data['category'])) {
 
             $article_data['query']->where('categorie_id', '=', $article_data['category']);
-            $article_data['articles'] = $article_data['query']->get();
+            $article_data['articles'] = $article_data['query']->paginate(6);//get();
 
         } else {
-            $article_data['articles'] = $article_data['query']->get();
+            $article_data['articles'] = $article_data['query']->paginate(6);
         }
 
         return view('article.index')->with('article_data', $article_data);

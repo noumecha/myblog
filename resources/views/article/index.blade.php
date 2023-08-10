@@ -96,6 +96,9 @@
                             </div>
                         </a>
 				    	<div class="news-text-box">
+				    		<h5>
+                                {{ date("d M Y",strtotime($article->getCreatedAt())) }}
+                            </h5>
 				    		<h3>
                                 <a href="{{ route('article.show', ['id'=> $article->getId()]) }}">
                                     {{ $article->getTitle() }}
@@ -116,17 +119,22 @@
 			    </div>
             @endforeach
 		</div>
+        {{-- $article_data['articles']->links() --}}
 		<div class="row">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 text-center">
 						<div class="pagination-wrap">
 							<ul>
-								<li><a href="#">Prev</a></li>
-								<li><a href="#">1</a></li>
-								<li><a class="active" href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">Next</a></li>
+								<li>
+                                    <a href="{{ $article_data['articles']->previousPageUrl() }}">Prev</a>
+                                </li>
+								<li>
+                                    <a class="active" href="#">{{ $article_data['articles']->currentPage() }}</a>
+                                </li>
+								<li>
+                                    <a href="{{ $article_data['articles']->nextPageUrl() }}">Next</a>
+                                </li>
 							</ul>
 						</div>
 					</div>
