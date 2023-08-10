@@ -32,7 +32,11 @@
                             SEARCH :
                         </label>
                         <div class="col-md-auto">
-                            <input type="text" id="word" class="form-control" name="word" value="">
+                            @if ($article_data['word'] !== "")
+                                <input type="text" id="word" class="form-control" name="word" value="{{ $article_data['word'] }}">
+                            @else
+                                <input type="text" id="word" class="form-control" name="word" value="">
+                            @endif
                         </div>
                         <label for="category" class="col-md-auto pe-0 form-label mb-0">
                             Categories :
@@ -41,7 +45,11 @@
                             <select class="form-control form-select" id="category" name="category">
                                 <option value="0" selected>All</option>
                                 @foreach ($article_data['categories'] as $category)
-                                    <option value="{{ $category->getId() }}">{{ $category->getName() }}</option>
+                                    @if ($article_data['category'] == $category->getId())
+                                        <option value="{{ $category->getId() }}" selected>{{ $category->getName() }}</option>
+                                    @else
+                                        <option value="{{ $category->getId() }}">{{ $category->getName() }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
@@ -52,7 +60,11 @@
                             <select class="form-control form-select" id="tag" name="tag">
                                 <option value="0" selected>All</option>
                                 @foreach ($article_data['tags'] as $tag)
-                                    <option value="{{ $tag->getId() }}">{{ $tag->getName() }}</option>
+                                    @if ($article_data['tag'] == $tag->getName())
+                                        <option value="{{ $tag->getName() }}" selected>{{ $tag->getName() }}</option>
+                                    @else
+                                        <option value="{{ $tag->getName() }}">{{ $tag->getName() }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
@@ -76,32 +88,32 @@
 	<div class="container">
 		<div class="row">
             @foreach($article_data['articles'] as $article)
-			<div class="col-lg-4 col-md-6">
-				<div class="single-latest-news">
-					<a href="{{ route('article.show', ['id'=> $article->getId()]) }}">
-                        <div style="background-image: url('{{ asset('/storage/'.$article->getImage()) }}')" class="latest-news-bg">
-                            <!--img src="{#{ asset('img/'.$article->getImage()) }#}" alt="" class="card-img-top img-card"-->
-                        </div>
-                    </a>
-					<div class="news-text-box">
-						<h3>
-                            <a href="{{ route('article.show', ['id'=> $article->getId()]) }}">
-                                {{ $article->getTitle() }}
-                            </a>
-                        </h3>
-						<!--p class="blog-meta">
-							<span class="author"><i class="fas fa-user"></i> Admin</span>
-							<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
-						</p-->
-						<p class="text-justify excerpt">
-                            {{ Str::limit($article->getContent(), $limit=300, $end="...") }}
-                        </p>
-						<a href="{{ route('article.show', ['id'=> $article->getId()]) }}" class="read-more-btn">
-                            read more <i class="fas fa-angle-right"></i>
+			    <div class="col-lg-4 col-md-6">
+				    <div class="single-latest-news">
+				    	<a href="{{ route('article.show', ['id'=> $article->getId()]) }}">
+                            <div style="background-image: url('{{ asset('/storage/'.$article->getImage()) }}')" class="latest-news-bg">
+                                <!--img src="{#{ asset('img/'.$article->getImage()) }#}" alt="" class="card-img-top img-card"-->
+                            </div>
                         </a>
-					</div>
-				</div>
-			</div>
+				    	<div class="news-text-box">
+				    		<h3>
+                                <a href="{{ route('article.show', ['id'=> $article->getId()]) }}">
+                                    {{ $article->getTitle() }}
+                                </a>
+                            </h3>
+				    		<!--p class="blog-meta">
+				    			<span class="author"><i class="fas fa-user"></i> Admin</span>
+				    			<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
+				    		</p-->
+				    		<p class="text-justify excerpt">
+                                {{ Str::limit($article->getContent(), $limit=300, $end="...") }}
+                            </p>
+				    		<a href="{{ route('article.show', ['id'=> $article->getId()]) }}" class="read-more-btn">
+                                read more <i class="fas fa-angle-right"></i>
+                            </a>
+				    	</div>
+				    </div>
+			    </div>
             @endforeach
 		</div>
 		<div class="row">

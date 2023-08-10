@@ -1,4 +1,9 @@
 @foreach($comments as $comment)
+    <style>
+        .hide-class {
+            display: none;
+        }
+    </style>
     <div class="single-comment-body" @if($comment->parent_id != null) style="margin-left:40px;" @endif>
         <div class="comment-user-avater">
             <img src="assets/img/avaters/avatar1.png" alt="">
@@ -6,10 +11,10 @@
         <div class="comment-text-body">
             <h4>{{ $comment->user->name }}
                 <span class="comment-date">{{ $comment->getUpdatedAt() }}</span>
-                <a id="reply-btn" href="#">reply</a>
+                <a id="reply-btn" href="#reply-btn">reply</a>
             </h4>
             <p>{{ $comment->getContent() }}</p>
-            <div class="comment-template mt-3" id="reply-form">
+            <div class="comment-template mt-3 hide-class" id="reply-form">
                 <form method="POST" action="{{ route('comments.store') }}">
                     @csrf
                     <!--p>

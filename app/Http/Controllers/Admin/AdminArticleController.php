@@ -32,7 +32,6 @@ class AdminArticleController extends Controller
         $newArticle->setContent($request->input('content'));
         $newArticle->setImage("games.jpg");
         $newArticle->setUserId(auth()->user()->id);
-        //$tags = json_encode($request->input('tags'));
         $newArticle->setTags($request->input('tags'));
         $newArticle->setCatgorieId($request->input('categorie'));
         $newArticle->save();
