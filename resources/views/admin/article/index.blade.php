@@ -42,7 +42,7 @@
                     <label for="content" class="form-label">
                         Contenu de l'Article :
                     </label>
-                    <textarea id="editor" name="content" class="form-control">
+                    <textarea id="ck-editor" name="content" cols="30" rows="10" class="form-control">
                         {{ old('content') }}
                     </textarea>
                 </div>

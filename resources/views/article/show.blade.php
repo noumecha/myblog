@@ -32,7 +32,7 @@
 						</p-->
 						<h2>{{ $article_data['article']->getTitle() }}</h2>
 						<p class="text-justify">
-							{{ $article_data['article']->getContent() }}
+							{!! $article_data['article']->getContent() !!}
 						</p>
 					</div>
                     <!-- Comments goes here

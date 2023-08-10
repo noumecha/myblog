@@ -33,7 +33,7 @@ class AdminArticleController extends Controller
         $newArticle->setImage("games.jpg");
         $newArticle->setUserId(auth()->user()->id);
         $newArticle->setTags($request->input('tags'));
-        $newArticle->setCatgorieId($request->input('categorie'));
+        $newArticle->setCatgorieId($request->input('categorie_id'));
         $newArticle->save();
 
         if($request->hasFile('image')) {
@@ -73,7 +73,7 @@ class AdminArticleController extends Controller
         $article->setTitle($request->input('title'));
         $article->setContent($request->input('content'));
         $article->setTags($request->input('tags'));
-        $article->setCatgorieId($request->input('categorie'));
+        $article->setCatgorieId($request->input('categorie_id'));
 
         if($request->hasFile('image')) {
             $imageName = $article->getId().".".$request->file('image')->getExtension();

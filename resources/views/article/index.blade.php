@@ -109,7 +109,7 @@
 				    			<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
 				    		</p-->
 				    		<p class="text-justify excerpt">
-                                {{ Str::limit($article->getContent(), $limit=300, $end="...") }}
+                                {!! Str::limit($article->getContent(), $limit=300, $end="...") !!}
                             </p>
 				    		<a href="{{ route('article.show', ['id'=> $article->getId()]) }}" class="read-more-btn">
                                 read more <i class="fas fa-angle-right"></i>

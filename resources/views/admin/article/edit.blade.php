@@ -52,7 +52,7 @@
                 <label for="content" class="form-label">
                     Description :
                 </label>
-                <textarea name="content" class="form-control" rows="3">
+                <textarea id="ck-editor" name="content" class="form-control" cols="10" rows="30">
                     {{ $admin_data['articles']->getContent() }}
                 </textarea>
             </div>
@@ -79,11 +79,11 @@
                 </div>
             </div>
             <div class="row">
-                <label for="categorie" class="col-lg-2 col-md-6 col-sm-12 col-form-label">
+                <label for="categorie_id" class="col-lg-2 col-md-6 col-sm-12 col-form-label">
                     Categorie :
                 </label>
                 <div class="col-lg-10 col-md-6 col-sm-12">
-                    <select class="form-control" name="categorie" id="categorie">
+                    <select class="form-control" name="categorie_id" id="categorie_id">
                         @foreach ($admin_data['categories'] as $cat)
                             @if($admin_data['articles']->getCategorieId() == $cat->getId())
                                 <option selected id="{{ $cat->getId() }}" value="{{ $cat->getId() }}">{{ $cat->getName() }}</option>

@@ -95,6 +95,8 @@ class Article extends Model
         $request->validate([
             "title" => "required|max:255",
             "content" => "required",
+            "tags" => "required",
+            "categorie_id" => "required",
             "image" => "image",
         ]);
     }

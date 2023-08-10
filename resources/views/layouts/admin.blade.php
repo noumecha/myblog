@@ -326,7 +326,14 @@
     <script src="{{ asset('/js/chartist/chartist.min.js') }}"></script>
     <script src="{{ asset('/js/chartist/chartist-plugin-tooltip.min.js') }}"></script>
     <script src="{{ asset('/js/pages/dashboard1.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/ckeditor5/build/ckeditor.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script>
+    <script>
+        console.log("testing editor");
+        ClassicEditor.create(document.querySelector('#ck-editor')).catch(e => {
+            console.error(e);
+        });
     </script>
 </body>
 
