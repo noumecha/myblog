@@ -329,12 +329,7 @@
     <script src="{{ asset('/assets/vendor/ckeditor5/build/ckeditor.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
-    <script>
-        console.log("testing editor");
-        ClassicEditor.create(document.querySelector('#ck-editor')).catch(e => {
-            console.error(e);
-        });
-    </script>
+    <script src="{{ asset('/js/editors/ck-editor.js') }}"></script>
 </body>
 
 </html>

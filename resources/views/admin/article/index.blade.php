@@ -40,7 +40,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="content" class="form-label">
-                        Contenu de l'Article :
+                        Contenu de l'article :
                     </label>
                     <textarea id="ck-editor" name="content" cols="30" rows="10" class="form-control">
                         {{ old('content') }}
