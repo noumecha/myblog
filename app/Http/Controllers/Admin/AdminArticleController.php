@@ -24,6 +24,7 @@ class AdminArticleController extends Controller
 
     public function store(Request $request) {
 
+        dd($request->all());
         article::validate($request);
 
         $newArticle = new Article();

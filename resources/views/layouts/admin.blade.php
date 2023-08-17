@@ -133,7 +133,7 @@
                         <li>
                             <!-- User Profile-->
                             <div class="user-profile d-flex no-block dropdown m-t-20">
-                                <div class="user-pic"><img src="../../assets/images/users/1.jpg" alt="users"
+                                <div class="user-pic"><img src="{{ asset('img/users/1.jpg')}}" alt="users"
                                         class="rounded-circle" width="40" /></div>
                                 <div class="user-content hide-menu m-l-10">
                                     <a href="#" class="" id="Userdd" role="button" data-bs-toggle="dropdown"
@@ -306,7 +306,22 @@
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
     </div>
-
+    <script src="{{ asset('ckeditor5/ckeditor.js') }}"></script>
+    <!-- script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script-->
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ),{
+                ckfinder: {
+                    uploadUrl: `{{ route('upload.image').'?_token='.csrf_token() }}`
+                }
+            })
+            .then(editor => {
+                console.log( editor);
+            })
+            .catch( error => {
+                console.error( error );
+            });
+    </script>
     <script src="{{ asset('/js/tags.js') }}">
     </script>
     <!-- All Jquery -->
@@ -326,10 +341,8 @@
     <script src="{{ asset('/js/chartist/chartist.min.js') }}"></script>
     <script src="{{ asset('/js/chartist/chartist-plugin-tooltip.min.js') }}"></script>
     <script src="{{ asset('/js/pages/dashboard1.js') }}"></script>
-    <script src="{{ asset('/assets/vendor/ckeditor5/build/ckeditor.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
-    <script src="{{ asset('/js/editors/ck-editor.js') }}"></script>
 </body>
 
 </html>

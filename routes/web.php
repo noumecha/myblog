@@ -63,5 +63,6 @@ Route::middleware('admin')->group(function () {
 
 // route for uploading image from ckeditor :
 Route::post('/upload/image', 'App\Http\Controllers\Admin\ImageUploadController@upload');//->name('upload.image');
+Route::post('/upload', [App\Http\Controllers\ImageUploadController::class, 'storeImage'])->name('upload.image');
 
 Auth::routes();

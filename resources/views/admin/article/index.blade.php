@@ -20,7 +20,7 @@
                         Title :
                     </label>
                     <div class="col-lg-10 col-md-6 col-sm-12">
-                        <input type="text" class="form-control" name="title" value="{{ old('title') }}">
+                        <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
                     </div>
                 </div>
                 <div class="row">
@@ -30,7 +30,7 @@
                                 Image :
                             </label>
                             <div class="col-lg-10 col-md-6 col-sm-12">
-                                <input type="file" name="image" class="form-control">
+                                <input type="file" id="image" name="image" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -38,11 +38,11 @@
                         &nbsp;
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="content" class="form-label">
+                <div class="form-group mb-3">
+                    <label for="editor" class="form-label">
                         Contenu de l'article :
                     </label>
-                    <textarea id="ck-editor" name="content" cols="30" rows="10" class="form-control">
+                    <textarea id="editor" name="content" class="form-control">
                         {{ old('content') }}
                     </textarea>
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ImageUploadController extends Controller
 {
@@ -11,14 +12,40 @@ class ImageUploadController extends Controller
      */
     public function upload (Request $request)
     {
-        $image = $request->file('image');
-        $destinationPath = public_path('ckeditor-images');
-        $imageName = $image->getClientOriginalName();
-        $image->move($destinationPath, $imageName);
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $destinationPath = public_path('ckeditor-images');
+            $image->move($destinationPath, $imageName);
 
-        return response()->json([
-            'success' => true,
-            'url' => asset('ckeditor-images/'.$imageName)
-        ]);
+            return response()->json([
+                'success' => true,
+                'fileName' => $imageName,
+                'url' => asset('ckeditor-images/'.$imageName)
+            ]);
+        }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function storeImage(Request $request)
+    {
+        if($request->hasFile('upload'))
+        {
+            $originName = $request->file('upload')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $ext = $request->file('upload')->getClientOriginalExtension();
+            $fileName = $fileName.'_'.time().'.'.$ext;
+
+            $request->file('upload')->move(public_path('ckeditor-images'), $fileName);
+            $url = asset('ckeditor-images/'.$fileName);
+
+            return response()->json([
+                'fileName' => $fileName,
+                'uploaded' => 1,
+                'url' => $url
+            ]);
+        }
     }
 }

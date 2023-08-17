@@ -52,7 +52,7 @@
                 <label for="content" class="form-label">
                     Description :
                 </label>
-                <textarea id="ck-editor" name="content" class="form-control" cols="10" rows="30">
+                <textarea id="editor" name="content" class="form-control" cols="10" rows="30">
                     {{ $admin_data['articles']->getContent() }}
                 </textarea>
             </div>
